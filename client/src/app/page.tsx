@@ -1,16 +1,7 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
-import CardsList from "./components/CardsList/CardsList";
+import CardsList from "./components/cardsList/CardsList";
 import { IBPIData } from "@/types/types";
-
-// interface IBPIDataValues {
-//   rate: number;
-//   code: string;
-// }
-
-// interface IBPIData {
-//   [key: string]: IBPIDataValues;
-// }
 
 export default function Home() {
   const [BPIData, setBPIData] = useState<IBPIData | undefined>(undefined);
@@ -19,6 +10,7 @@ export default function Home() {
     try {
       const response = await fetch("http://localhost:3002/api/prices/latest");
       const responseJSON = await response.json();
+      console.log(responseJSON, "responseJSON");
       setBPIData(responseJSON.data);
     } catch (error) {
       console.log("An error occurred when fetching BPI data");
@@ -27,9 +19,14 @@ export default function Home() {
 
   useEffect(() => {
     fetchBPIData();
+    const intervalId = setInterval(fetchBPIData, 20000);
+    return () => clearInterval(intervalId);
   }, [fetchBPIData]);
 
   return (
-    <main className="p-4">{BPIData && <CardsList BPIData={BPIData} />}</main>
+    <main className="p-4">
+      <h1 className="text-center text-xl font-bold">Bitcoin Price Index</h1>
+      {BPIData && <CardsList BPIData={BPIData} />}
+    </main>
   );
 }

@@ -7,3 +7,8 @@ export interface IBPIDataValues {
 export interface IBPIData {
   [key: string]: IBPIDataValues;
 }
+
+export interface IBPILatestPricesValue {
+  rate: number,
+  created_at: string,
+}
