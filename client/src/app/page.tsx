@@ -10,9 +10,9 @@ export default function Home() {
     try {
       const response = await fetch("http://localhost:3002/api/prices/latest");
       const responseJSON = await response.json();
-      console.log(responseJSON, "responseJSON");
       setBPIData(responseJSON.data);
     } catch (error) {
+      // Could create a component for displaying errors
       console.log("An error occurred when fetching BPI data");
     }
   }, []);

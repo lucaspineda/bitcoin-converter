@@ -37,7 +37,6 @@ const getIndexesLastPrice = async (currenciesCode) => {
           acc[current.code] = current;
           return acc;
         }, {});
-        console.log('chamuuu')
         resolve({data: result});
       }
     });

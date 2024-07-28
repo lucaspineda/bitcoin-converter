@@ -54,7 +54,6 @@ const ChartModal: FC<IChartModal> = ({ code, handleModalClickOutside }) => {
 
   useEffect(() => {
     fetchBPILatestPrices();
-    console.log("heyhey");
   }, [fetchBPILatestPrices]);
 
   function getCurrentTime(dateString: string) {

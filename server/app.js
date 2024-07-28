@@ -11,21 +11,6 @@ app.get("/", (req, res) => {
 
 app.listen(port, () => {
   createDataFetcherJob();
-  console.log(`Server listening on port ${port}`);
 });
 
 app.use('/api', BPIRouter);
-
-
-const db = new sqlite3.Database("BPI.db");
-
-// db.serialize(() => {
-
-//   db.all('SELECT * FROM test', (err, rows) => {
-//     if (err) {
-//         console.error(err);
-//     } else {
-//         console.log(rows);
-//     }
-// });
-// });
