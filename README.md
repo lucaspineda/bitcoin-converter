@@ -4,15 +4,11 @@
    ```sh
    git clone https://github.com/lucaspineda/bitcoin-converter.git
    ```
-2. Install NPM packages
+2. Install NPM packages in both `server` and `client` directories
    ```sh
    npm install
    ```
-3. Start the local backend server on `server` directory
-   ```sh
-   npm run dev
-   ```
-4. Start the local client server on `client` directory
+3. Start the local servers for both  `server` and `client` directories
    ```sh
    npm run dev
    ```
