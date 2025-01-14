@@ -4,9 +4,9 @@ import CardsList from "./components/cardsList/CardsList";
 import { IBPIData } from "@/types/types";
 
 export default function Home() {
-  const [BPIData, setBPIData] = useState<IBPIData | undefined>(undefined);
+  const [BPIData, setBPIData] = useState<IBPIData>();
 
-  const fetchBPIData = useCallback(async () => {
+  const fetchBPIData = async () => {
     try {
       const response = await fetch("http://localhost:3002/api/prices/latest");
       const responseJSON = await response.json();
@@ -15,13 +15,13 @@ export default function Home() {
       // Could create a component for displaying errors
       console.log("An error occurred when fetching BPI data");
     }
-  }, []);
+  };
 
   useEffect(() => {
     fetchBPIData();
     const intervalId = setInterval(fetchBPIData, 20000);
     return () => clearInterval(intervalId);
-  }, [fetchBPIData]);
+  }, []);
 
   return (
     <main className="p-4">
